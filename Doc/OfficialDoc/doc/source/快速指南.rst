@@ -1,0 +1,105 @@
+========
+快速指南
+========
+
+客户端使用
+=========
+对于客户端，SunShareClient支持http协议的接口和python-sdk两种方式。
+
+http接口使用
+------------
+1.注册用户示例
+
+.. code-block:: bash
+
+	$ curl http://127.0.0.1:11911/user/register?user=test&password=123456
+
+2.登录用户示例
+
+.. code-block:: bash
+
+	$ curl http://127.0.0.1:11911/user/login?user=test&password=123456
+
+3.用户生成token示例
+
+.. code-block:: bash
+
+	$ curl http://127.0.0.1:11911/user/gen_token?user=test&token_key=7890
+
+4.用户获取token示例
+
+.. code-block:: bash
+
+	$ http://127.0.0.1:11911/user/get_token?user=test&password=123456
+
+5.用户调用数据接口示例（用户调用数据接口需要经过前提流程，注册用户-登录用户-生成token-使用token获取数据）
+
+.. code-block:: bash
+
+	$ http://127.0.0.1:11911/meteorological/get_wind_nwp_data_updated?token_key=7890&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjU1Mzg0MzkuMTU3MTQzLCJ1c2VyIjoidGVzdCJ9.ZXdp688IIJgnFgSqgRx7rXBxYNK0LLDZTuQL_P09saE&entity=XJJX&start_time=2022-05-30,00:00:00&end_time=2022-06-01,00:00:00
+
+python-sdk使用
+--------------
+
+以下是SunShareClient主程脚本代码示例：
+
+.. code-block:: python
+
+
+	from sunshareclient.client.api import DataAPI
+
+
+
+	### 设置除了token_key和token外，额外的参数
+	tmp_dict = {}
+	tmp_dict['entity'] = 'XJJX'
+	tmp_dict['start_time'] = '2022-05-30,00:00:00'
+	tmp_dict['end_time'] = '2022-06-01,00:00:00'
+	sunshareclient = DataAPI(token_key = 7890,
+	                    token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2ODM1MzUyODIuMDA5NzE2NSwidXNlciI6InRlc3QifQ.gwhPIB_m4nAFGfIdSSdircknCQxQ82leyw8ylsTcdHs',
+	                    timeout=6000)
+	# df = sunshareclient.query(dataapi='get_wind_nwp_data_updated_local',params=tmp_dict)
+	df = sunshareclient.get_wind_nwp_data_updated_local(params=tmp_dict)
+	# df = sunshareclient.get_wind_nwp_data_history_local(params=tmp_dict)
+	# df = sunshareclient.get_wind_measure_data_local(params=tmp_dict)
+	# df = sunshareclient.get_wind_turbine_data_local(params=tmp_dict)
+	print(df)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

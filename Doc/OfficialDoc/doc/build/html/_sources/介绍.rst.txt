@@ -1,0 +1,15 @@
+====
+介绍
+====
+SunShareClient是一个数据服务接口包，主要功能是提供数据服务的python-sdk，主要技术采用partial和getattr元编程技术。
+
+**主要技术**：
+
+	* 元编程技术-partial技术
+	* 元编程技术-__getattr__技术
+
+
+
+
+
+

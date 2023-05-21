@@ -1,0 +1,3 @@
+include sunshareclient/doc/README.mdown
+include sunshareclient/sunshareclient_config.yaml
+graft sunshareclient/test

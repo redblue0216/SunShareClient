@@ -1,0 +1,12 @@
+MANIFEST.in
+setup.py
+sunshareclient/__init__.py
+sunshareclient.egg-info/PKG-INFO
+sunshareclient.egg-info/SOURCES.txt
+sunshareclient.egg-info/dependency_links.txt
+sunshareclient.egg-info/top_level.txt
+sunshareclient/client/__init__.py
+sunshareclient/client/api.py
+sunshareclient/client/cons.py
+sunshareclient/test/test_dataapi.py
+sunshareclient/test/__pycache__/test_dataapi.cpython-310.pyc
